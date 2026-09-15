@@ -65,6 +65,7 @@ jobs:
         run: |
           mkdir unpacked
           ditto -x -k download/*.zip unpacked
+          if [ -z "$EXPECTED_UPDATE" ]; then codesign --verify --deep --strict --verbose=2 "unpacked/My Quest.app"; fi
           echo "APP_EXE=$PWD/unpacked/My Quest.app/Contents/MacOS/My Quest" >> "$GITHUB_ENV"
       - name: Extract Linux app
         if: runner.os == 'Linux'
