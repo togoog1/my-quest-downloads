@@ -12,7 +12,9 @@ try {
  await button.click();await page.getByRole('dialog',{name:'App updates',exact:true}).waitFor();
  const state=await page.evaluate(()=>window.quest.updates.state());assert.equal(state.status,'idle');
  if(process.env.VERIFY_UPDATE_FEED==='true') {
-  const checked=await page.evaluate(()=>window.quest.updates.check());assert.equal(checked.status,'current',JSON.stringify(checked));
+  const checked=await page.evaluate(()=>window.quest.updates.check());assert.equal(checked.status,process.env.EXPECTED_UPDATE?'available':'current',JSON.stringify(checked));
+  if(process.env.EXPECTED_UPDATE)assert.equal(checked.version,process.env.EXPECTED_UPDATE);
+  console.log('Feed result:',JSON.stringify(checked));
  }
  await page.screenshot({path:'release-smoke.png'});
  console.log(JSON.stringify({platform:process.platform,architecture:process.arch,build:info.build,state}));
