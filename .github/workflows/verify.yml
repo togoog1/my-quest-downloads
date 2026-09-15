@@ -6,6 +6,10 @@ on:
         description: Release tag to test (drafts supported)
         required: true
         default: v0.2.0
+      verify_feed:
+        description: Check the published update feed
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -31,6 +35,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       RELEASE_TAG: ${{ inputs.tag }}
+      VERIFY_UPDATE_FEED: ${{ inputs.verify_feed }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
