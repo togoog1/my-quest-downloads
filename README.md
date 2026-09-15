@@ -9,7 +9,7 @@ This repository contains desktop installers and update metadata only. Applicatio
 | Windows 64-bit | `My-Quest-VERSION-win-x64.exe` |
 | Mac with Apple silicon | `My-Quest-VERSION-mac-arm64.dmg` |
 | Mac with an Intel processor | `My-Quest-VERSION-mac-x64.dmg` |
-| Linux 64-bit | `My-Quest-VERSION-linux-x64.AppImage` |
+| Linux 64-bit | `My-Quest-VERSION-linux-x86_64.AppImage` |
 
 Use **App updates** on the start screen or table to check for a new version. Downloads and restarts occur only when requested. Close your current table before restarting. Saved adventures are stored separately from the app and survive replacement.
 
