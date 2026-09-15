@@ -10,6 +10,10 @@ on:
         description: Check the published update feed
         type: boolean
         default: false
+      expected_update:
+        description: Expected newer version when testing an older client
+        required: false
+        default: ""
 permissions:
   contents: write # Draft releases require collaborator-level access.
 jobs:
@@ -36,6 +40,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       RELEASE_TAG: ${{ inputs.tag }}
       VERIFY_UPDATE_FEED: ${{ inputs.verify_feed }}
+      EXPECTED_UPDATE: ${{ inputs.expected_update }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
