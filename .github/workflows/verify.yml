@@ -1,0 +1,77 @@
+name: Verify desktop installers
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to test (drafts supported)
+        required: true
+        default: v0.2.0
+permissions:
+  contents: read
+jobs:
+  smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win-x64
+            extension: exe
+          - os: ubuntu-latest
+            platform: linux-x86_64
+            extension: AppImage
+          - os: macos-15
+            platform: mac-arm64
+            extension: zip
+          - os: macos-15-intel
+            platform: mac-x64
+            extension: zip
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - shell: bash
+        run: gh release download "$RELEASE_TAG" --pattern "My-Quest-*-${{ matrix.platform }}.${{ matrix.extension }}" --dir download
+      - run: npm install --no-save @playwright/test
+      - name: Install Windows app
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $installer = (Get-ChildItem download/*.exe)[0].FullName
+          Start-Process -FilePath $installer -ArgumentList '/S' -Wait
+          Get-Process -Name 'My Quest' -ErrorAction SilentlyContinue | Stop-Process -Force
+          $exe = Join-Path $env:LOCALAPPDATA 'Programs/my-quest/My Quest.exe'
+          if (!(Test-Path $exe)) { throw "Installed executable missing: $exe" }
+          "APP_EXE=$exe" >> $env:GITHUB_ENV
+      - name: Extract Mac app
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          mkdir unpacked
+          ditto -x -k download/*.zip unpacked
+          echo "APP_EXE=$PWD/unpacked/My Quest.app/Contents/MacOS/My Quest" >> "$GITHUB_ENV"
+      - name: Extract Linux app
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          chmod +x download/*.AppImage
+          download/*.AppImage --appimage-extract
+          echo "APP_EXE=$PWD/squashfs-root/my-quest" >> "$GITHUB_ENV"
+          echo "APPIMAGE=$(realpath download/*.AppImage)" >> "$GITHUB_ENV"
+      - name: Run Linux smoke test
+        if: runner.os == 'Linux'
+        run: xvfb-run --auto-servernum node smoke.mjs
+      - name: Run Windows and Mac smoke test
+        if: runner.os != 'Linux'
+        run: node smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-${{ matrix.platform }}
+          path: release-smoke.png
