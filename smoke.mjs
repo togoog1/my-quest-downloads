@@ -11,6 +11,9 @@ try {
  const info=await page.evaluate(()=>window.quest.boot());assert.equal(info.build.version,process.env.RELEASE_TAG.replace(/^v/,''));assert.equal(info.build.development,false);
  await button.click();await page.getByRole('dialog',{name:'App updates',exact:true}).waitFor();
  const state=await page.evaluate(()=>window.quest.updates.state());assert.equal(state.status,'idle');
+ if(process.env.VERIFY_UPDATE_FEED==='true') {
+  const checked=await page.evaluate(()=>window.quest.updates.check());assert.equal(checked.status,'current',JSON.stringify(checked));
+ }
  await page.screenshot({path:'release-smoke.png'});
  console.log(JSON.stringify({platform:process.platform,architecture:process.arch,build:info.build,state}));
 } finally {await app.close();}
