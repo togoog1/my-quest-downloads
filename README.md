@@ -2,12 +2,12 @@
 
 ## Download
 
-Version **0.2.1** — choose your computer:
+Version **0.2.2** — choose your computer:
 
-- [Mac — Apple silicon (M1 or newer)](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.1/My-Quest-0.2.1-mac-arm64.dmg)
-- [Mac — Intel](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.1/My-Quest-0.2.1-mac-x64.dmg)
-- [Windows](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.1/My-Quest-0.2.1-win-x64.exe)
-- [Linux](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.1/My-Quest-0.2.1-linux-x86_64.AppImage)
+- [Mac — Apple silicon (M1 or newer)](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.2/My-Quest-0.2.2-mac-arm64.dmg)
+- [Mac — Intel](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.2/My-Quest-0.2.2-mac-x64.dmg)
+- [Windows](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.2/My-Quest-0.2.2-win-x64.exe)
+- [Linux](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.2/My-Quest-0.2.2-linux-x86_64.AppImage)
 
 On Mac, open the downloaded disk image and drag **My Quest** into **Applications**. Quit the old version before replacing it. These previews are not Apple-notarized; if macOS blocks launch, use **System Settings → Privacy & Security → Open Anyway** for this app, if offered.
 
