@@ -2,14 +2,14 @@
 
 ## Download
 
-Version **0.2.5** — choose your computer:
+Version **0.2.6** — choose your computer:
 
-- [Mac — Apple silicon (M1 or newer)](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.5/My-Quest-0.2.5-mac-arm64.dmg)
-- [Mac — Intel](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.5/My-Quest-0.2.5-mac-x64.dmg)
-- [Windows](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.5/My-Quest-0.2.5-win-x64.exe)
-- [Linux](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.5/My-Quest-0.2.5-linux-x86_64.AppImage)
+- [Mac — Apple silicon (M1 or newer)](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.6/My-Quest-0.2.6-mac-arm64.dmg)
+- [Mac — Intel](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.6/My-Quest-0.2.6-mac-x64.dmg)
+- [Windows](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.6/My-Quest-0.2.6-win-x64.exe)
+- [Linux](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.6/My-Quest-0.2.6-linux-x86_64.AppImage)
 
-**The GM and players should all install 0.2.5 before joining the table.**
+**The GM and players should all install 0.2.6 before joining the table.**
 
 On Mac, open the downloaded disk image and drag **My Quest** into **Applications**. Quit the old version before replacing it. These previews are not Apple-notarized; if macOS blocks launch, use **System Settings → Privacy & Security → Open Anyway** for this app, if offered.
 
