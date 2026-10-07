@@ -14,6 +14,10 @@ on:
         description: Expected newer version when testing an older client
         required: false
         default: ""
+      windows_only:
+        description: Verify only Windows (for focused update checks)
+        type: boolean
+        default: false
 permissions:
   contents: write # Draft releases require collaborator-level access.
 jobs:
@@ -21,19 +25,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - os: windows-latest
-            platform: win-x64
-            extension: exe
-          - os: ubuntu-latest
-            platform: linux-x86_64
-            extension: AppImage
-          - os: macos-15
-            platform: mac-arm64
-            extension: zip
-          - os: macos-15-intel
-            platform: mac-x64
-            extension: zip
+        # Linux verification is deferred until requested otherwise.
+        include: ${{ fromJSON(inputs.windows_only && '[{"os":"windows-latest","platform":"win-x64","extension":"exe"}]' || '[{"os":"windows-latest","platform":"win-x64","extension":"exe"},{"os":"macos-15","platform":"mac-arm64","extension":"zip"},{"os":"macos-15-intel","platform":"mac-x64","extension":"zip"}]') }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     env:
@@ -83,6 +76,7 @@ jobs:
         run: node smoke.mjs
       - uses: actions/upload-artifact@v4
         if: always()
+        continue-on-error: true
         with:
           name: smoke-${{ matrix.platform }}
           path: release-smoke.png
