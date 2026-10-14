@@ -2,15 +2,15 @@
 
 ## Download
 
-Stable version **0.2.16** — choose your computer:
+Stable version **0.2.17** — choose your computer:
 
-- [Mac — Apple silicon (M1 or newer)](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.16/My-Quest-0.2.16-mac-arm64.dmg)
-- [Mac — Intel](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.16/My-Quest-0.2.16-mac-x64.dmg)
-- [Windows — x64](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.16/My-Quest-0.2.16-win-x64.exe)
+- [Mac — Apple silicon (M1 or newer)](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.17/My-Quest-0.2.17-mac-arm64.dmg)
+- [Mac — Intel](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.17/My-Quest-0.2.17-mac-x64.dmg)
+- [Windows — x64](https://github.com/togoog1/my-quest-downloads/releases/download/v0.2.17/My-Quest-0.2.17-win-x64.exe)
 
 [Release notes and all downloads](https://github.com/togoog1/my-quest-downloads/releases/latest)
 
-**The GM and players should all install 0.2.16 before joining the table.**
+**The GM and players should all install 0.2.17 before joining the table.**
 
 Linux installers and verification are deferred until further notice.
 
