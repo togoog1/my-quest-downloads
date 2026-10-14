@@ -14,4 +14,4 @@ Linux installers and verification are deferred until further notice.
 
 ## Install and update
 
-On Mac, quit My Quest before replacing it in Applications. On Windows, use App updates → Restart and install; the app closes and reopens automatically. Your saved adventures are kept.n.
+On Mac, quit My Quest before replacing it in Applications. On Windows, use App updates → Restart and install; the app closes and reopens automatically. Your saved adventures are kept.
